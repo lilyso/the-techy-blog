@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const { Article } = require('../../models');
-const withAuth = require('../../utils/auth');
+const router = require("express").Router();
+const { Article } = require("../../models");
+const withAuth = require("../../utils/auth");
 
-router.post('/', withAuth, async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const newArticle = await Article.create({
       ...req.body,
@@ -15,7 +15,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const articleData = await Article.destroy({
       where: {
@@ -25,7 +25,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!articleData) {
-      res.status(404).json({ message: 'No article found with this id!' });
+      res.status(404).json({ message: "No article found with this id!" });
       return;
     }
 
