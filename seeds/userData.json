@@ -1,12 +1,17 @@
 [
   {
-    "user_name": "Sal",
-    "email": "sal@hotmail.com",
+    "user_name": "Nick1986",
+    "email": "nick@hotmail.com",
     "password": "password12345"
   },
   {
-    "user_name": "Lernantino",
-    "email": "lernantino@gmail.com",
+    "user_name": "PattiSm1th",
+    "email": "pattismith81@gmail.com",
+    "password": "password12345"
+  },
+  {
+    "user_name": "GretaCarbo",
+    "email": "gcarbo1@gmail.com",
     "password": "password12345"
   }
 ]

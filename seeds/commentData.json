@@ -1,10 +1,24 @@
 [
     {
       "id": 1,
-      "comment": "",
-      "blog_id": "",
-      "user-id": 1,
-      "date_stamp": ""
+      "comment": "This is great",
+      "blog_id": 1,
+      "user-id": 3,
+      "date_stamp": "23/11/2021"
+    },
+    {
+      "id": 2,
+      "comment": "I use it for everything",
+      "blog_id": 1,
+      "user-id": 2,
+      "date_stamp": "23/11/2021"
+    },
+    {
+      "id": 3,
+      "comment": "Very helpful",
+      "blog_id": 2,
+      "user-id": 3,
+      "date_stamp": "23/11/2021"
     }
   ]
   
