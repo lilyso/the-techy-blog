@@ -4,24 +4,24 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
+    // Get all articles and JOIN with user data
     const articleData = await Article.findAll({
       include: [
         {
           model: User,
-          // attributes: ["user_name"],
+          attributes: ["user_name"],
         },
       ],
     });
-    res.status(200).json(articleData);
-    // // Serialize data so the template can read it
-    // const articles = articleData.map((project) => article.get({ plain: true }));
+    // res.status(200).json(articleData);
+    // Serialize data so the template can read it
+    const articles = articleData.map((article) => article.get({ plain: true }));
 
-    // // Pass serialized data and session flag into template
-    // res.render("homepage", {
-    //   articles,
-    //   logged_in: req.session.logged_in,
-    // });
+    // Pass serialized data and session flag into template
+    res.render("homepage", {
+      articles,
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -29,15 +29,15 @@ router.get("/", async (req, res) => {
 
 router.get("/article/:id", async (req, res) => {
   try {
-    const articleData = await article.findByPk(req.params.id, {
+    const articleData = await Article.findByPk(req.params.id, {
       include: [
         {
           model: User,
-          attributes: ["name"],
+          attributes: ["user_name"],
         },
       ],
     });
-
+    // res.status(200).json(articleData);
     const article = articleData.get({ plain: true });
 
     res.render("article", {
