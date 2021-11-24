@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{user_name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Post:</h3>
+
+    <form class="form new-article">
+      <div>
+        <label for="article-title">Title:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="article-title"
+          name="article-title"
+        />
+      </div>
+      <div class="mt-2">
+        <label for="article-funding">Summary:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="article-summary"
+          name="article-summary"
+          placeholder="Describe your article in one to two sentences"
+        />
+      </div>
+      <div class="mt-2">
+        <label for="article-body">Body:</label>
+        <textarea
+          class="form-control"
+          id="article-body"
+          name="article-body"
+        ></textarea>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary mt-4">Publish</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if articles.length}}
+    <div class="col-md-6 article-list">
+      <h3>Published articles:</h3>
+
+      {{#each articles as |article|}}
+        <div class="row mb-2">
+          <div class="col-md-8">
+            <h4><a href="/article/{{article.id}}">{{article.title}}</a></h4>
+          </div>
+          <div class="col-md-4">
+            <button
+              class="btn btn-sm btn-danger"
+              data-id="{{article.id}}"
+            >DELETE</button>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
+<script src="./js/dashboard.js"></script>

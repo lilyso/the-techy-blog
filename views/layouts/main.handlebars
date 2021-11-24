@@ -25,8 +25,8 @@
           <div>
             <!-- Conditionally render login or logout links -->
             {{#if logged_in}}
-              <a class="px-2" href="/profile">Home</a>
-              <a class="px-2" href="/profile">Dashboard</a>
+              <a class="px-2" href="/">Home</a>
+              <a class="px-2" href="/dashboard">Dashboard</a>
               <button class="btn btn-light px-2" id="logout">Logout</button>
             {{else}}
               <a href="/login">Login</a>

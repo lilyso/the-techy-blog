@@ -15,6 +15,10 @@ Article.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    summary: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     content: {
       type: DataTypes.TEXT,
     },
