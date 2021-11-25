@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/comments", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     // Get all comments and JOIN with user data
     const commentData = await Comment.findAll({
@@ -37,12 +37,12 @@ router.get("/comments", async (req, res) => {
         },
       ],
     });
-    res.status(200).json(articleData);
+    // res.status(200).json(commentData);
     // Serialize data so the template can read it
     const comments = commentData.map((comment) => comment.get({ plain: true }));
 
     res.render("article", {
-      ...comments,
+      comments,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
