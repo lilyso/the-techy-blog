@@ -9,7 +9,6 @@ router.get("/", async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ["user_name"],
         },
       ],
     });
@@ -20,6 +19,30 @@ router.get("/", async (req, res) => {
     // Pass serialized data and session flag into template
     res.render("homepage", {
       articles,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    // Get all articles and JOIN with user data
+    const commentData = await Comment.findAll({
+      include: [
+        {
+          model: Comment,
+          model: User,
+        },
+      ],
+    });
+    // res.status(200).json(articleData);
+    // Serialize data so the template can read it
+    const comments = commentData.map((comment) => comment.get({ plain: true }));
+
+    res.render("article", {
+      ...comments,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

@@ -16,7 +16,7 @@
     <div class="">
       <header
         class="navbar navbar-light d-flex p-4"
-        style="background-color: #e3f2fd"
+        style="background-color: #3D5A80"
       >
         <h1 class="flex-grow-1">
           <a href="/">The Techy Blog</a>
@@ -27,7 +27,7 @@
             {{#if logged_in}}
               <a class="px-2" href="/">Home</a>
               <a class="px-2" href="/dashboard">Dashboard</a>
-              <button class="btn btn-light px-2" id="logout">Logout</button>
+              <button id="logout">Logout</button>
             {{else}}
               <a href="/login">Login</a>
             {{/if}}
@@ -38,7 +38,30 @@
         <!-- Render the sub layout -->
         {{{body}}}
       </main>
-      <footer></footer>
+      <footer class="fixed-bottom" style="background-color: #3D5A80">
+        <div class="d-flex justify-content-center m-4">
+          <img
+            class="p-2"
+            src="images/2021-Twitter-logo---white.png"
+            alt="twitter logo"
+          />
+          <img
+            class="p-2"
+            src="images/f_logo_RGB-White_72.png"
+            alt="facebook logo"
+          />
+          <img
+            class="p-2"
+            src="images/instagram-glyph-logo_May2016.png"
+            alt="instagram logo"
+          />
+          <img
+            class="p-2"
+            src="images/GitHub-Mark-Light-64px.png"
+            alt="github logo"
+          />
+        </div>
+      </footer>
     </div>
 
     <!-- Render script for logged in users only -->

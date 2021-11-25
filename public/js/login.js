@@ -1,6 +1,8 @@
+const incorrect = document.querySelector(".incorrect");
+const invalid = document.querySelector(".invalid");
+
 const loginFormHandler = async (event) => {
   event.preventDefault();
-
   // Collect values from the login form
   const email = document.querySelector("#email-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
@@ -14,10 +16,11 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      // If successful, redirect the browser to the home page
+      // If successful, redirect the browser to the dashboard
       document.location.replace("/dashboard");
     } else {
-      alert(response.statusText);
+      // alert(response.statusText);
+      incorrect.classList.toggle("incorrect");
     }
   }
 };
@@ -39,7 +42,8 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
-      alert(response.statusText);
+      // alert(response.statusText);
+      invalid.classList.toggle("invalid");
     }
   }
 };

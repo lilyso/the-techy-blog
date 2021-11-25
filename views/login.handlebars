@@ -13,8 +13,10 @@
           <input class="form-control" type="password" id="password-login" />
         </div>
         <div class="form-group">
-          <button class="btn btn-primary mt-4" type="submit">Login</button>
+          <button class="mt-4" type="submit">Login</button>
         </div>
+        <p class="incorrect p-2 m-2 text-danger"><em>Incorrect email or
+            password, please try again is incorrect</em></p>
       </form>
     </div>
     <div class="col-md-6">
@@ -39,9 +41,13 @@
           <input class="form-control" type="password" id="password-signup" />
         </div>
         <div class="form-group">
-          <button class="btn btn-primary mt-4" type="submit">
+          <button class="mt-4" type="submit">
             Sign Up
           </button>
+        </div>
+        <div class="invalid p-2 m-2 text-danger">
+          <p><em>Please enter a valid email or password. Password should be at
+              least 8 characters long.</em></p>
         </div>
       </form>
     </div>

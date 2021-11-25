@@ -7,6 +7,11 @@ User.hasMany(Article, {
   onDelete: "CASCADE",
 });
 
+User.hasMany(Comment, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
+
 Article.hasMany(Comment, {
   foreignKey: "article_id",
   onDelete: "CASCADE",

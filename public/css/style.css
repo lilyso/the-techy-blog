@@ -1,0 +1,35 @@
+.incorrect {
+  display: none;
+}
+.invalid {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: #98c1d9;
+}
+header a:hover {
+  color: white;
+}
+
+a:hover {
+  color: #3d5a80;
+}
+
+nav button {
+  background-color: white;
+  color: #3d5a80;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bolder;
+}
+
+button {
+  background-color: #3d5a80;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
