@@ -2,7 +2,9 @@
   <h2>{{title}}</h2>
   <p>Created by {{user.user_name}} on {{format_date date_created}}</p>
   <p>{{content}}</p>
-  {{#each comments as |comment|}}
-    <p>"{{comment.comment}}" - {{comment.user_name}}</p>
-  {{/each}}
+  {{#if comments.length}}
+    {{#each comments as |comment|}}
+      <p>"{{comment.comment}}" - {{comment.user_name}}</p>
+    {{/each}}
+  {{/if}}
 </div>

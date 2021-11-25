@@ -26,18 +26,18 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/comments", async (req, res) => {
   try {
-    // Get all articles and JOIN with user data
+    // Get all comments and JOIN with user data
     const commentData = await Comment.findAll({
       include: [
         {
-          model: Comment,
           model: User,
+          attribute: "user_name",
         },
       ],
     });
-    // res.status(200).json(articleData);
+    res.status(200).json(articleData);
     // Serialize data so the template can read it
     const comments = commentData.map((comment) => comment.get({ plain: true }));
 
