@@ -26,43 +26,19 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
-  try {
-    // Get all comments and JOIN with user data
-    const commentData = await Comment.findAll({
-      include: [
-        {
-          model: User,
-          attribute: "user_name",
-        },
-      ],
-    });
-    // res.status(200).json(commentData);
-    // Serialize data so the template can read it
-    const comments = commentData.map((comment) => comment.get({ plain: true }));
-
-    res.render("article", {
-      comments,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 router.get("/article/:id", async (req, res) => {
   try {
     const articleData = await Article.findByPk(req.params.id, {
       include: [
         {
           model: User,
-          attributes: ["user_name"],
         },
+        { model: Comment, include: [{ model: User }] },
       ],
     });
     // res.status(200).json(articleData);
     const article = articleData.get({ plain: true });
-
+    console.log(article);
     res.render("article", {
       ...article,
       logged_in: req.session.logged_in,
