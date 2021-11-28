@@ -17,19 +17,18 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-router.put("/:id/edit", withAuth, async (req, res) => {
+router.put("/:id", withAuth, async (req, res) => {
   try {
     const updatedArticle = await Article.update(
       {
         title: req.body.title,
         summary: req.body.summary,
         content: req.body.content,
-        user_id: req.session.user_id,
       },
 
       {
         where: {
-          id: req.body.articleId,
+          id: req.params.id,
           user_id: req.session.user_id,
         },
       }

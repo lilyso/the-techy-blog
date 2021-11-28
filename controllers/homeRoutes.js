@@ -33,7 +33,6 @@ router.get("/article/:id/edit", async (req, res) => {
         {
           model: User,
         },
-        { model: Comment, include: [{ model: User }] },
       ],
     });
     // res.status(200).json(articleData);
