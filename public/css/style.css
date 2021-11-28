@@ -33,3 +33,11 @@ button {
   border-radius: 5px;
   padding: 5px 10px;
 }
+
+.delete {
+  background-color: #ee6c4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}

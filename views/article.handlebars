@@ -3,7 +3,7 @@
 <div class="text-center">
   <h2>{{title}}</h2>
   <p>Created by {{user.user_name}} on {{format_date date_created}}</p>
-  <p>{{content}}</p>
+  <p>{{{content}}}</p>
   {{#if comments.length}}
     {{#each comments as |comment|}}
       <p>"{{comment.comment}}" - {{comment.user.user_name}}</p>
@@ -23,7 +23,7 @@
           />
         </div>
         <div>
-          <button type="submit" class="mt-4">Publish</button>
+          <button type="submit" class="mt-4">Submit</button>
         </div>
       </form>
     </div>

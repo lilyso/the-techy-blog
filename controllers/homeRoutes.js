@@ -26,6 +26,27 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/article/:id/edit", async (req, res) => {
+  try {
+    const articleData = await Article.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+        },
+        { model: Comment, include: [{ model: User }] },
+      ],
+    });
+    // res.status(200).json(articleData);
+    const article = articleData.get({ plain: true });
+    res.render("articleupdate", {
+      ...article,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/article/:id", async (req, res) => {
   try {
     const articleData = await Article.findByPk(req.params.id, {
