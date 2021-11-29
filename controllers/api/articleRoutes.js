@@ -28,7 +28,7 @@ router.put("/:id", withAuth, async (req, res) => {
 
       {
         where: {
-          id: req.params.id,
+          id: req.body.id,
           user_id: req.session.user_id,
         },
       }
@@ -48,7 +48,6 @@ router.delete("/:id", withAuth, async (req, res) => {
         user_id: req.session.user_id,
       },
     });
-
     if (!articleData) {
       res.status(404).json({ message: "No article found with this id!" });
       return;

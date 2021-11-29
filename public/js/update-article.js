@@ -4,9 +4,8 @@ const updateArticleHandler = async (event) => {
   const title = document.querySelector("#article-title").value.trim();
   const summary = document.querySelector("#summary").value.trim();
   const content = document.querySelector("#content").value.trim();
-
-  if (title && summary && content && event.target.hasAttribute("data-id")) {
-    const id = event.target.getAttribute("data-id");
+  const id = document.querySelector("#id").getAttribute("data-id");
+  if (title && summary && content && id) {
     const response = await fetch(`/api/articles/${id}`, {
       method: "PUT",
       body: JSON.stringify({ id, title, summary, content }),
@@ -23,6 +22,8 @@ const updateArticleHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
+  event.preventDefault();
+
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
 
@@ -42,6 +43,4 @@ document
   .querySelector(".edit-article")
   .addEventListener("submit", updateArticleHandler);
 
-document
-  .querySelector(".event-buttons")
-  .addEventListener("click", delButtonHandler);
+document.querySelector(".delete").addEventListener("click", delButtonHandler);
