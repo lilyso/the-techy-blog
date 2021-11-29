@@ -11,7 +11,7 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Set up Handlebars.js engine with custom helpers
+// Handlebars.js custom helpers
 const hbs = exphbs.create({ helpers });
 
 const sess = {
@@ -21,12 +21,16 @@ const sess = {
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize,
+    // Check active user every hour
+    checkExpirationInterval: 60 * 60 * 1000,
+    // Session expires after 4 hours
+    expiration: 4 * 60 * 60 * 1000,
   }),
 };
 
 app.use(session(sess));
 
-// Inform Express.js on which template engine to use
+// Handlebars template engine
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 

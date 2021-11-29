@@ -1,3 +1,4 @@
+// Update article PUT request
 const updateArticleHandler = async (event) => {
   event.preventDefault();
 
@@ -13,6 +14,7 @@ const updateArticleHandler = async (event) => {
         "Content-Type": "application/json",
       },
     });
+    // Redirect to dashboard if successfull
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
@@ -21,9 +23,10 @@ const updateArticleHandler = async (event) => {
   }
 };
 
+// DELETE article request
 const delButtonHandler = async (event) => {
   event.preventDefault();
-  //   let confirm = ;
+  // Confirm that the user wants to delete article
   if (!confirm("Are you sure you want to delete your article?")) {
     return;
   } else if (event.target.hasAttribute("data-id")) {
@@ -32,7 +35,7 @@ const delButtonHandler = async (event) => {
     const response = await fetch(`/api/articles/${id}`, {
       method: "DELETE",
     });
-
+    // Redirect to dashboard if successfull
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
@@ -41,6 +44,7 @@ const delButtonHandler = async (event) => {
   }
 };
 
+//Event listeners for update and delete buttons
 document
   .querySelector(".edit-article")
   .addEventListener("submit", updateArticleHandler);

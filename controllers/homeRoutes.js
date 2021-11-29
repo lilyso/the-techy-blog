@@ -12,8 +12,7 @@ router.get("/", async (req, res) => {
         },
       ],
     });
-    // res.status(200).json(articleData);
-    // Serialize data so the template can read it
+
     const articles = articleData.map((article) => article.get({ plain: true }));
 
     // Pass serialized data and session flag into template
@@ -26,8 +25,10 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Edit article route
 router.get("/article/:id/edit", async (req, res) => {
   try {
+    // Get article by id and JOIN with user data
     const articleData = await Article.findByPk(req.params.id, {
       include: [
         {
@@ -35,7 +36,6 @@ router.get("/article/:id/edit", async (req, res) => {
         },
       ],
     });
-    // res.status(200).json(articleData);
     const article = articleData.get({ plain: true });
     res.render("articleupdate", {
       ...article,
@@ -48,17 +48,18 @@ router.get("/article/:id/edit", async (req, res) => {
 
 router.get("/article/:id", async (req, res) => {
   let userId = req.session.user_id;
+  // Get article by id and JOIN wit user and comment data
   try {
     const articleData = await Article.findByPk(req.params.id, {
       include: [
         {
           model: User,
         },
+        // Comment table JOIN with User to get username
         { model: Comment, include: [{ model: User }] },
       ],
     });
 
-    // res.status(200).json(articleData);
     const article = articleData.get({ plain: true });
 
     res.render("article", {
@@ -71,7 +72,7 @@ router.get("/article/:id", async (req, res) => {
   }
 });
 
-// Use withAuth middleware to prevent access to route
+// Get user articles when logged in to render to dashboard
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
@@ -92,7 +93,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  // If the user is already logged in, redirect the request to another route
+  // If the user is logged in, redirect to dashboard
   if (req.session.logged_in) {
     res.redirect("/dashboard");
     return;

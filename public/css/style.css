@@ -1,3 +1,4 @@
+/* Hidden error messages */
 .incorrect {
   display: none;
 }
@@ -5,6 +6,7 @@
   display: none;
 }
 
+/* Link styles */
 a {
   text-decoration: none;
   color: #98c1d9;
@@ -17,6 +19,13 @@ a:hover {
   color: #3d5a80;
 }
 
+.comment-link {
+  text-decoration: underline;
+  color: #3d5a80;
+  cursor: pointer;
+}
+
+/* Button styles */
 nav button {
   background-color: white;
   color: #3d5a80;
@@ -32,18 +41,4 @@ button {
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
-}
-
-.delete {
-  background-color: #ee6c4d;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-}
-
-.comment-link {
-  text-decoration: underline;
-  color: #3d5a80;
-  cursor: pointer;
 }
