@@ -1,6 +1,6 @@
 # The Techy Blog
 >A CMS-style blog site where developers can publish their blog posts and comment on other developers’ posts.
-> Live demo [_here_](https://www.example.com).
+> Live demo [_here_](https://ancient-headland-48213.herokuapp.com/).
 
 ## Table of Contents
 
@@ -89,7 +89,7 @@ npm run seed
 
 or
 
-node seeds/index.js
+node seeds/seed.js
 ```
 
 Enter the following to run the application and start the local server:
