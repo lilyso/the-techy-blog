@@ -1,6 +1,6 @@
 <input type="hidden" id="articleId" value="{{id}}" />
 <!-- Render article -->
-<div class="text-center">
+<div class="mx-2">
   <h2>{{title}}</h2>
   <p>Created by {{user.user_name}} on {{format_date date_created}}</p>
   <p>{{{content}}}</p>
@@ -16,12 +16,12 @@
         <!-- Edit comment form can only be activated if user is logged in -->
         {{#compare comment.user_id ../uid}}
         <div class="comment-{{comment.id}}-form d-none">
-          <form class="update-comment"><input type="hidden" name="id" value="{{comment.id}}"><input value="{{comment.comment}}" type="text" id="comment-{{comment.id}}" name="comment" /></form> 
+          <form class="update-comment "><input type="hidden" name="id" value="{{comment.id}}"><input value="{{comment.comment}}" type="text" id="comment-{{comment.id}}" name="comment" class="form-control"/></form> 
         </div>
         {{/compare}}
         <!-- User can only edit/delete their own comments if logged in -->
         {{#compare comment.user_id ../uid}}
-          <div class="d-flex justify-content-center px-4">
+          <div class="d-flex px-4">
             <p  data-id="{{comment.id}}" class="px-2 mb-0 comment-link edit-comment-link">
               Edit</p>
             <p data-id="{{comment.id}}" class="px-2 mb-0 comment-link delete-comment">
