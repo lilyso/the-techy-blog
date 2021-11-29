@@ -64,7 +64,7 @@ router.get("/article/:id", async (req, res) => {
     res.render("article", {
       ...article,
       logged_in: req.session.logged_in,
-      name: userId,
+      uid: userId,
     });
   } catch (err) {
     res.status(500).json(err);

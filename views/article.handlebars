@@ -1,19 +1,17 @@
 <input type="hidden" id="articleId" value="{{id}}" />
 
 <div class="text-center">
-  <h2>{{title}}</h2>
+  <h2>{{title}} {{comment.user_id}} {{uid}}</h2>
   <p>Created by {{user.user_name}} on {{format_date date_created}}</p>
   <p>{{{content}}}</p>
   {{#if comments.length}}
 
     {{#each comments as |comment|}}
 
-      <div class="d-flex align-items-center justify-content-center">
+      <div class="d-flex align-items-center justify-content-center mb-2">
         <div class="comment-{{comment.id}}-text">
-          <p class="mb-0 comment-{{comment.id}}-p">"{{comment.comment}}" -
-            {{comment.user.user_name}}
-            {{format_date comment.date_created}}</p>
-           
+          <p class="mb-0 comment-{{comment.id}}-p">"{{comment.comment}}" </p>
+          <p>- {{comment.user.user_name}} ({{format_date comment.date_created}})</p>
         </div>
         {{#compare comment.user_id ../uid}}
         <div class="comment-{{comment.id}}-form d-none">
@@ -22,9 +20,9 @@
         {{/compare}}
         {{#compare comment.user_id ../uid}}
           <div class="d-flex px-4">
-            <p  data-id="{{comment.id}}" class="px-2 mb-0 edit-comment-link">
+            <p  data-id="{{comment.id}}" class="px-2 mb-0 comment-link edit-comment-link">
               Edit</p>
-            <p data-id="{{comment.id}}" class="px-2 mb-0 edit-link delete-comment">
+            <p data-id="{{comment.id}}" class="px-2 mb-0 comment-link delete-comment">
               Delete</p>
           </div>
         {{/compare}}

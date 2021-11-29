@@ -5,7 +5,7 @@ const newCommentHandler = async (event) => {
   const articleId = document.querySelector("#articleId").value;
 
   if (newComment) {
-    const response = await fetch(`/api/comments`, {
+    const response = await fetch("/api/comments", {
       method: "POST",
       body: JSON.stringify({ newComment, articleId }),
       headers: {
@@ -81,8 +81,8 @@ editbuttons.forEach(function (button) {
   button.addEventListener("click", toggleEditForms);
 });
 
-var editFoms = document.querySelectorAll(".update-comment");
+var editForms = document.querySelectorAll(".update-comment");
 
-editFoms.forEach(function (button) {
+editForms.forEach(function (button) {
   button.addEventListener("submit", updateComment);
 });
