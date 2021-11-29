@@ -52,10 +52,9 @@
             <h4><a href="/article/{{article.id}}">{{article.title}}</a></h4>
           </div>
           <div class="col-md-4">
-            <button
-              class="btn btn-sm btn-danger"
-              data-id="{{article.id}}"
-            >DELETE</button>
+            <a href="/article/{{article.id}}/edit"><button
+                class="p-2"
+              >Edit</button></a>
           </div>
         </div>
       {{/each}}
