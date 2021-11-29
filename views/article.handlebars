@@ -5,8 +5,30 @@
   <p>Created by {{user.user_name}} on {{format_date date_created}}</p>
   <p>{{{content}}}</p>
   {{#if comments.length}}
+
     {{#each comments as |comment|}}
-      <p>"{{comment.comment}}" - {{comment.user.user_name}}</p>
+
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="comment-{{comment.id}}-text">
+          <p class="mb-0 comment-{{comment.id}}-p">"{{comment.comment}}" -
+            {{comment.user.user_name}}
+            {{format_date comment.date_created}}</p>
+           
+        </div>
+        {{#compare comment.user_id ../uid}}
+        <div class="comment-{{comment.id}}-form d-none">
+          <form class="update-comment"><input type="hidden" name="id" value="{{comment.id}}"><input value="{{comment.comment}}" type="text" id="comment-{{comment.id}}" name="comment" /></form> 
+        </div>
+        {{/compare}}
+        {{#compare comment.user_id ../uid}}
+          <div class="d-flex px-4">
+            <p  data-id="{{comment.id}}" class="px-2 mb-0 edit-comment-link">
+              Edit</p>
+            <p data-id="{{comment.id}}" class="px-2 mb-0 edit-link delete-comment">
+              Delete</p>
+          </div>
+        {{/compare}}
+      </div>
     {{/each}}
   {{/if}}
 

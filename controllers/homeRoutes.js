@@ -47,6 +47,7 @@ router.get("/article/:id/edit", async (req, res) => {
 });
 
 router.get("/article/:id", async (req, res) => {
+  let userId = req.session.user_id;
   try {
     const articleData = await Article.findByPk(req.params.id, {
       include: [
@@ -56,12 +57,14 @@ router.get("/article/:id", async (req, res) => {
         { model: Comment, include: [{ model: User }] },
       ],
     });
+
     // res.status(200).json(articleData);
     const article = articleData.get({ plain: true });
-    console.log(article);
+
     res.render("article", {
       ...article,
       logged_in: req.session.logged_in,
+      name: userId,
     });
   } catch (err) {
     res.status(500).json(err);
