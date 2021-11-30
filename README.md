@@ -115,6 +115,7 @@ To do:
 
 - Add a Handlbars Helper to replace line breaks so that paragraphs can be rendered. Currently, new blog posts are stored with no paragraph breaks and are rendered in one paragraph.
 - Add option to upload images in blog. 
+- Add more content
 
 ## Contact
 
